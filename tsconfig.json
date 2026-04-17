@@ -4,7 +4,9 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": ["ESNext"],
+    "lib": [
+      "ESNext"
+    ],
     "module": "CommonJS",
     "moduleResolution": "Node",
     "noUncheckedIndexedAccess": true,
@@ -18,6 +20,13 @@
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "target": "ES2020"
+    "target": "ES2020",
+    "types": [
+      "node",
+      "jest"
+    ]
   },
+  "include": [
+    "src"
+  ]
 }
