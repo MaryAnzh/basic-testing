@@ -11,8 +11,8 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "test": "jest --silent",
-    "test:verbose": "jest",
+    "test": "jest --silent --runInBand",
+    "test:verbose": "jest --runInBand",
     "build": "tsc"
   },
   "devDependencies": {

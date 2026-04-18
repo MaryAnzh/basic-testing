@@ -1,17 +1,34 @@
-// Uncomment the code below and write your tests
-/* import {  simpleCalculator, Action } from './index';
+import { simpleCalculator, Action } from './index';
 
-const testCases = [
+describe('simpleCalculator – table tests', () => {
+  const validCases = [
     { a: 1, b: 2, action: Action.Add, expected: 3 },
-    { a: 2, b: 2, action: Action.Add, expected: 4 },
-    { a: 3, b: 2, action: Action.Add, expected: 5 },
-    // continue cases for other actions    
-]; */
+    { a: 10, b: 4, action: Action.Subtract, expected: 6 },
+    { a: 6, b: 7, action: Action.Multiply, expected: 42 },
+    { a: 20, b: 5, action: Action.Divide, expected: 4 },
+    { a: 2, b: 3, action: Action.Exponentiate, expected: 8 },
+  ];
 
-describe('simpleCalculator', () => {
-  // This test case is just to run this test suite, remove it when you write your own tests
-  test('should blah-blah', () => {
-    expect(true).toBe(true);
-  });
-  // Consider to use Jest table tests API to test all cases above
+  test.each(validCases)(
+    'should correctly calculate: $a $action $b = $expected',
+    ({ a, b, action, expected }) => {
+      const result = simpleCalculator({ a, b, action });
+      expect(result).toBe(expected);
+    },
+  );
+
+  const invalidCases = [
+    { a: 'hello', b: 2, action: Action.Add },
+    { a: 1, b: null, action: Action.Subtract },
+    { a: 1, b: 2, action: '%' },
+    { a: undefined, b: 2, action: Action.Multiply },
+  ];
+
+  test.each(invalidCases)(
+    'should return null for invalid input: %o',
+    (input) => {
+      const result = simpleCalculator(input as any);
+      expect(result).toBeNull();
+    },
+  );
 });
